@@ -28,7 +28,7 @@ namespace  Capstone1.final
                     string afterFirst;
                     string pigLatinOut = "";
                     int x;
-                    string vowel = "AEIOUaeiou";
+                    char[] vowel= "AEIOUaeiou".ToCharArray();
 
                     Console.WriteLine("enter a t convert into piglatin");
 
@@ -39,15 +39,17 @@ namespace  Capstone1.final
                     {
                         afterFirst = piece.Substring(1);
                         firstLetter = piece.Substring(0, 1);
-                        x = vowel.IndexOf(firstLetter);
-
+                        x = piece.IndexOfAny(vowel);
+                        String firstvowel = piece.Substring(x);
+                        string beforevowel = piece.Substring(0,x);
                         if (x == -1)
                         {
                             pigLatinOut = (afterFirst + firstLetter + "ay ");
                         }
                         else
                         {
-                            pigLatinOut = (firstLetter + afterFirst + "way ");
+                            
+                            pigLatinOut = (firstvowel + beforevowel + "way ");
                         }
 
                         Console.Write(pigLatinOut);
